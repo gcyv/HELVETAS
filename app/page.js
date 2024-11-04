@@ -1,101 +1,53 @@
-import Image from "next/image";
+import React from 'react';
+import { Search, Plus, ArrowLeft, ArrowRight, X } from 'lucide-react';
 
-export default function Home() {
+const Page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2rem', backgroundColor: '#f9f1f8', height: '100vh' }}>
+      <div style={{ width: '100%', maxWidth: '1200px', padding: '0.5rem', display: 'flex', alignItems: 'center', backgroundColor: '#f4e5f4', marginBottom: '2rem', borderRadius: '30px' }}>
+        <ArrowLeft style={{ height: '24px', width: '24px', marginRight: '0.5rem' }} />
+        <ArrowRight style={{ height: '24px', width: '24px', marginRight: '1rem' }} />
+        <input
+          type="text"
+          placeholder=""
+          style={{ flex: 1, border: 'none', outline: 'none', padding: '0.3rem', backgroundColor: 'transparent', fontSize: '16px' }}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <X style={{ height: '24px', width: '24px', marginLeft: '0.5rem', cursor: 'pointer' }} />
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <header style={{ marginBottom: '2rem' }}>
+        <img src="/path/to/helvetas-logo.png" alt="Helvetas Bhutan" style={{ height: '100px' }} />
+      </header>
+
+      <div style={{ width: '100%', maxWidth: '600px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', borderRadius: '30px', backgroundColor: '#f4e5f4', padding: '0.5rem 1rem' }}>
+          <Search style={{ height: '24px', width: '24px', marginRight: '0.5rem' }} />
+          <input
+            type="text"
+            placeholder="Search"
+            style={{ flex: 1, border: 'none', outline: 'none', padding: '0.75rem', backgroundColor: 'transparent', fontSize: '16px' }}
+          />
+          <X style={{ height: '24px', width: '24px', marginLeft: '0.5rem', cursor: 'pointer' }} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+        {[...Array(6)].map((_, index) => (
+          <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', height: '80px', width: '80px', backgroundColor: '#e6e7ed', cursor: 'pointer' }}>
+            {index === 0 || index === 5 ? (
+              <img src="/path/to/icon.png" alt="Icon" style={{ height: '50px', width: '50px' }} />
+            ) : (
+              <Plus style={{ height: '50px', width: '50px', color: '#aaa' }} />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
+
+export default Page;
+
+// To run this React component using Node.js, ensure you have a bundler like Webpack or use a framework like Next.js.
+// Node.js doesn't natively support ES module syntax in .js files without additional configuration.
+// Alternatively, add "type": "module" in your package.json or change the file extension to .mjs.
