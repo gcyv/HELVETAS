@@ -50,7 +50,7 @@ const HomePage = () => {
             <button
               type="button"
               onClick={() => setSearchQueryTop("")}
-              className="absolute right-2 top-2 text-gray-400 hover:text-gray-600"
+              className="absolute right-2 top-2 text-gray-600 hover:text-gray-400"
             >
               <RxCross2 size={20} />
             </button>
