@@ -1,53 +1,76 @@
-import React from 'react';
-import { Search, Plus, ArrowLeft, ArrowRight, X } from 'lucide-react';
+"use client";
 
-const Page = () => {
+import React, { useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { RxCross2 } from "react-icons/rx";
+import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
+
+const HomePage = () => {
+  const [searchQueryTop, setSearchQueryTop] = useState("");
+  const [searchQueryMiddle, setSearchQueryMiddle] = useState("");
+
+  const handleSearchTop = (e) => {
+    e.preventDefault();
+    console.log("Top Search Query:", searchQueryTop);
+  };
+
+  const handleSearchMiddle = (e) => {
+    e.preventDefault();
+    console.log("Middle Search Query:", searchQueryMiddle);
+  };
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2rem', backgroundColor: '#f9f1f8', height: '100vh' }}>
-      <div style={{ width: '100%', maxWidth: '1200px', padding: '0.5rem', display: 'flex', alignItems: 'center', backgroundColor: '#f4e5f4', marginBottom: '2rem', borderRadius: '30px' }}>
-        <ArrowLeft style={{ height: '24px', width: '24px', marginRight: '0.5rem' }} />
-        <ArrowRight style={{ height: '24px', width: '24px', marginRight: '1rem' }} />
-        <input
-          type="text"
-          placeholder=""
-          style={{ flex: 1, border: 'none', outline: 'none', padding: '0.3rem', backgroundColor: 'transparent', fontSize: '16px' }}
-        />
-        <X style={{ height: '24px', width: '24px', marginLeft: '0.5rem', cursor: 'pointer' }} />
-      </div>
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100 space-y-8">
+      {/* Container for icons and search bar */}
+      <div className="absolute top-4 left-4 flex items-center space-x-4">
+        {/* Icons for navigation */}
+        <button className="text-gray-600 hover:text-gray-800">
+          <FaArrowLeft size={20} />
+        </button>
+        <button className="text-gray-600 hover:text-gray-800">
+          <FaArrowRight size={20} />
+        </button>
 
-      <header style={{ marginBottom: '2rem' }}>
-        <img src="/path/to/helvetas-logo.png" alt="Helvetas Bhutan" style={{ height: '100px' }} />
-      </header>
-
-      <div style={{ width: '100%', maxWidth: '600px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', borderRadius: '30px', backgroundColor: '#f4e5f4', padding: '0.5rem 1rem' }}>
-          <Search style={{ height: '24px', width: '24px', marginRight: '0.5rem' }} />
-          <input
-            type="text"
-            placeholder="Search"
-            style={{ flex: 1, border: 'none', outline: 'none', padding: '0.75rem', backgroundColor: 'transparent', fontSize: '16px' }}
-          />
-          <X style={{ height: '24px', width: '24px', marginLeft: '0.5rem', cursor: 'pointer' }} />
-        </div>
-      </div>
-
-      <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
-        {[...Array(6)].map((_, index) => (
-          <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', height: '80px', width: '80px', backgroundColor: '#e6e7ed', cursor: 'pointer' }}>
-            {index === 0 || index === 5 ? (
-              <img src="/path/to/icon.png" alt="Icon" style={{ height: '50px', width: '50px' }} />
-            ) : (
-              <Plus style={{ height: '50px', width: '50px', color: '#aaa' }} />
-            )}
+        {/* Top Search Bar */}
+        <form onSubmit={handleSearchTop} className="flex flex-grow">
+          <div className="relative w-full max-w-6xl flex items-center"> {/* Keep the max-w-6xl for the search bar */}
+            <Input
+              type="text"
+              value={searchQueryTop}
+              onChange={(e) => setSearchQueryTop(e.target.value)}
+              placeholder="Top Search Bar"
+              className="w-full max-w-6xl px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            {/* Icon beside input */}
+            <button
+              type="button"
+              onClick={() => setSearchQueryTop("")}
+              className="ml-2 text-gray-400 hover:text-gray-600"
+            >
+              <RxCross2 size={20} />
+            </button>
           </div>
-        ))}
+        </form>
       </div>
+
+      {/* Logo Placeholder */}
+      <div className="my-8 pt-16"> {/* Add padding to create space for top search bar */}
+        <img src="/logo.png" alt="Your Logo" className="w-40 h-50" />
+      </div>
+
+      {/* Middle Search Bar */}
+      <form onSubmit={handleSearchMiddle} className="w-full max-w-md px-4">
+        <Input
+          type="text"
+          value={searchQueryMiddle}
+          onChange={(e) => setSearchQueryMiddle(e.target.value)}
+          placeholder="Search"
+          className="w-full px-4 py-2 border rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </form>
     </div>
   );
 };
 
-export default Page;
-
-// To run this React component using Node.js, ensure you have a bundler like Webpack or use a framework like Next.js.
-// Node.js doesn't natively support ES module syntax in .js files without additional configuration.
-// Alternatively, add "type": "module" in your package.json or change the file extension to .mjs.
+export default HomePage;
