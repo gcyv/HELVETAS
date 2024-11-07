@@ -1,24 +1,28 @@
-// app/HomePage.js
-
 "use client";
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import CommonElements from '@/components/common/pages';
 import { Input } from '@/components/ui/input';
 import { Search, CirclePlus, SquareUserRound } from 'lucide-react';
 
 const HomePage = () => {
+  const router = useRouter();
   const [searchQueryTop, setSearchQueryTop] = useState("");
   const [searchQueryMiddle, setSearchQueryMiddle] = useState("");
 
   const handleSearchTop = (e) => {
     e.preventDefault();
-    console.log("Top Search Query:", searchQueryTop);
+    if (searchQueryTop) {
+      router.push(`/results?query=${searchQueryTop}`);
+    }
   };
 
   const handleSearchMiddle = (e) => {
     e.preventDefault();
-    console.log("Middle Search Query:", searchQueryMiddle);
+    if (searchQueryMiddle) {
+      router.push(`/results?query=${searchQueryMiddle}`);
+    }
   };
 
   return (
