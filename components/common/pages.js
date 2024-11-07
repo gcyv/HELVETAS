@@ -8,15 +8,6 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 const CommonElements = ({ searchQueryTop, setSearchQueryTop, handleSearchTop }) => {
   return (
     <div className="w-full flex items-center justify-between px-4">
-      {/* Navigation Icons */}
-      <div className="flex items-center space-x-4">
-        <button className="text-gray-600 hover:text-gray-800">
-          <ArrowLeft size={20} />
-        </button>
-        <button className="text-gray-600 hover:text-gray-800">
-          <ArrowRight size={20} />
-        </button>
-      </div>
 
       {/* Top Search Bar */}
       <form onSubmit={handleSearchTop} className="flex-grow mx-4">
