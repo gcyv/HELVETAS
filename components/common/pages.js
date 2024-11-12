@@ -1,9 +1,6 @@
-// components/CommonElements.js
-
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { RxCross2 } from 'react-icons/rx';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 const CommonElements = ({ searchQueryTop, setSearchQueryTop, handleSearchTop }) => {
   return (
@@ -16,16 +13,16 @@ const CommonElements = ({ searchQueryTop, setSearchQueryTop, handleSearchTop }) 
             type="text"
             value={searchQueryTop}
             onChange={(e) => setSearchQueryTop(e.target.value)}
-            placeholder="Search"
-            className="w-full ml-8 max-w-7xl px-6 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Search..."
+            className="w-full ml-20 max-w-7xl px-10 py-6 border-2 border-gray-300 rounded-lg shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all duration-300 ease-in-out text-lg"
           />
           {/* Cross Icon */}
           <button
             type="button"
             onClick={() => setSearchQueryTop("")}
-            className="absolute right-2 top-2 text-gray-600 hover:text-gray-400"
+            className="absolute right-3 top-2 text-gray-600 hover:text-gray-400 transition-all duration-300"
           >
-            <RxCross2 size={20} />
+            <RxCross2 size={24} />
           </button>
         </div>
       </form>
